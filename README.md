@@ -4,6 +4,8 @@
 
 I've been practicing in writing scripts in Python using exercises from [PRACTICEPYTHON.ORG](http://www.PRACTICEPYTHON.org)
 
+I will update this repo from time to time.
+
 ### About the program ###
 * Version na
 * Author [tevtonez](mailto: tevtonez@gmail.com)
