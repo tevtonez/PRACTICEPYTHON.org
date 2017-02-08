@@ -25,5 +25,5 @@ if __name__ == '__main__':
     user_num = int( input( 'Please enter a number: ' ) )
 
     # getting the divisors:
-    div_list = [number for number in range( 1, user_num ) if user_num % number == 0]
+    div_list = [number for number in range( 2, user_num ) if user_num % number == 0]
     print ( div_list )
