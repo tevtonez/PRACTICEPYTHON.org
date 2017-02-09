@@ -36,3 +36,20 @@ if __name__ == '__main__':
         return l1
 
     print ( list_to_set( generate_list( 20 ) ) )
+    print( "\n\n" )
+
+#===============================================================================
+# extra
+#===============================================================================
+    def list_to_set_2( _list ):
+        """takes a list and makes set"""
+        new_list = []
+        for i in _list:
+            if i not in new_list:
+                new_list.append( i )
+
+        return sorted( new_list )
+
+
+    print ( list_to_set_2( generate_list( 20 ) ) )
+
