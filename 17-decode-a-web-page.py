@@ -8,7 +8,7 @@ WUse the BeautifulSoup and requests Python packages to print out a list of all t
 
 # SOLUTION
 # created by Kostya
-# on 10 Feb 2017
+# on 18 Feb 2017
 # Time spent: 60 min
 
 import urllib, html.parser
