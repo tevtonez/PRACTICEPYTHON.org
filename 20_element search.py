@@ -13,19 +13,53 @@ Extras:
 # SOLUTION
 # created by Kostya
 # on 20 Feb 2017
-# Time spent: 3 min without extra
+# Time spent: 3 min without extra + 6 mins for extra
 
 def find_number( l, n ):
     if n in l:
-        print ( "True" )
         return True
-    print( "False" )
+
     return False
+
+
+#===============================================================================
+# binary search
+#===============================================================================
+def binary_simple( l, n ):
+
+    start = 1
+    end = len( l ) - 1
+
+
+    while True:
+
+        middle = int( ( end - start ) / 2 )
+
+        if middle < 0 or middle > end or middle < start:
+            return False
+
+        if n == l[middle]:
+            return True
+
+        elif middle > n:
+            start = middle
+        else:
+            end = middle
+
 
 if __name__ == '__main__':
 
     l = [2, 4, 6, 8, 10]
-    n = 3
+    n = 4
 
-    find_number( l, n )
+    print( find_number( l, n ) )
+
+#===============================================================================
+# binary search
+#===============================================================================
+
+
+
+
+    print( binary_simple( l, n ) )
 
