@@ -1,6 +1,6 @@
 '''
 ----------------------------------------
-TASK 17 from http://www.practicepython.org/
+TASK 19 from http://www.practicepython.org/
 ----------------------------------------
 Create a program that will play the “cows and bulls” game with the user. The game works like this:
 
