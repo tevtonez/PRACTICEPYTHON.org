@@ -15,7 +15,7 @@ Extras:
 # SOLUTION
 # created by Kostya
 # on 20 Feb 2017
-# Time spent: 15 min
+# Time spent: 15 min with extras
 #
 
 
@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
     soup = BeautifulSoup( html_doc, 'html.parser' )
 
-    with open( file_name, 'w', encoding = 'utf-8', newline = "\n" ) as file:
+    with open( file_name, 'w', encoding = 'utf-8' ) as file:
         try:
             for title in soup.select( 'h2.story-heading' ):
                 file.write( title.get_text().strip() + "\n" )
