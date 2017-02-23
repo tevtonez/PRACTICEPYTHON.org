@@ -16,18 +16,12 @@ Ask the user what size game board they want to draw, and draw it for them to the
 
 if __name__ == '__main__':
 
-    # size = input( "Enter size of the board in row, columns (eg. 3,4 ): " )
-    # size = size.strip().split( sep = "," )
-
-    """
-    a = '---'.join( '    ' )
-    b = '   '.join( '||||' )
-    print( '\n'.join( ( a, b, a, b, a, b, a ) ) )
-    """
+    size = input( "Enter size of the board in row, columns (eg. 3,4 ): " )
+    size = size.strip().split( sep = "," )
 
 
-    cols = 4
-    rows = 3
+    cols = int( size[0] )
+    rows = int( size[1] )
 
     a = "aaa"
     a_sp = " " * ( cols + 1 )
