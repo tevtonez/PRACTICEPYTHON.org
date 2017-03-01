@@ -21,94 +21,95 @@ As a bonus, you can ask the players if they want to play again and keep a runnin
 
 import os, copy
 
+
+
+def generate_board( colls = 3, rows = 3 ):
+    '''Returns a dictionary with lines that form the game board'''
+    board = {}
+
+    # forming line of cells
+    line = []
+    for i in range( colls ):
+        line.append( "|   " )
+    line.append( "|" )
+
+    # forming dictionary 'board'
+    for i in range( rows ):
+        board[i + 1] = copy.deepcopy( line )
+        board["sep{}".format( i )] = " --- --- ---"
+
+    return board
+
+
+
+def print_board( board, colls = 3, rows = 3 ):
+    '''Takes game board dictionary and prints it'''
+    for i in range( rows ):
+        print( board["sep{}".format( i )] )
+        cell_row = ""
+        for cell in board[i + 1]:
+            cell_row += cell
+        print( cell_row )
+    print( board["sep0"] )
+
+
+
+def update_board( board, move_col, move_row, symbol ):
+    '''Updates game board dictionary with user's move'''
+    board[move_row][move_col - 1] = '| ' + symbol + ' '
+    return board
+
+
+
+def check_winner( board, colls = 3, rows = 3 ):
+    '''Takes game board dictionary and checks if there are winning combinations'''
+    winner = None
+    check_set = {"|   "}
+
+    # checking rows
+    for i in range( rows ):
+        if "|   " not in board[i + 1]:
+            row_set = set( board[i + 1] )
+            check_set = row_set
+
+
+    # checking columns
+    for i in range( colls ):
+        cells_list = []
+        for r in range( rows ):
+            cells_list.append( board[r + 1][i] )
+
+        coll_set = set( cells_list )
+        if "|   " not in coll_set:
+            check_set = coll_set
+
+
+    # checking diagonals
+    # HARDCODED!!!
+    diagonals = [ [ board[1][0], board[2][1], board[3][2] ], [ board[3][0], board[2][1], board[1][2] ] ]
+    for diagonal in diagonals:
+        diagonal_set = set( diagonal )
+        if "|   " not in diagonal_set:
+            if ( "| x " not in diagonal_set ) or ( "| o " not in diagonal_set ):
+                check_set = diagonal_set
+
+
+
+    if "|   " not in check_set:
+        if "| x " in check_set and "| o " in check_set:
+            pass
+
+        elif "| x " not in check_set:
+            winner = 2
+            print( "Player2 wins!" )
+
+        elif "| o " not in check_set:
+            winner = 1
+            print( "Player1 wins!" )
+
+    return winner
+
 if __name__ == '__main__':
-
-    def generate_board( colls = 3, rows = 3 ):
-        '''Returns a dictionary with lines that form the game board'''
-        board = {}
-
-        # forming line of cells
-        line = []
-        for i in range( colls ):
-            line.append( "|   " )
-        line.append( "|" )
-
-        # forming dictionary 'board'
-        for i in range( rows ):
-            board[i + 1] = copy.deepcopy( line )
-            board["sep{}".format( i )] = " --- --- ---"
-
-        return board
-
-
-
-    def print_board( board, colls = 3, rows = 3 ):
-        '''Takes game board dictionary and prints it'''
-        for i in range( rows ):
-            print( board["sep{}".format( i )] )
-            cell_row = ""
-            for cell in board[i + 1]:
-                cell_row += cell
-            print( cell_row )
-        print( board["sep0"] )
-
-
-
-    def update_board( board, move_col, move_row, symbol ):
-        '''Updates game board dictionary with user's move'''
-        board[move_row][move_col - 1] = '| ' + symbol + ' '
-        return board
-
-
-
-    def check_winner( board, colls = 3, rows = 3 ):
-        '''Takes game board dictionary and checks if there are winning combinations'''
-        winner = None
-        check_set = {"|   "}
-
-        # checking rows
-        for i in range( rows ):
-            if "|   " not in board[i + 1]:
-                row_set = set( board[i + 1] )
-                check_set = row_set
-
-
-        # checking columns
-        for i in range( colls ):
-            cells_list = []
-            for r in range( rows ):
-                cells_list.append( board[r + 1][i] )
-
-            coll_set = set( cells_list )
-            if "|   " not in coll_set:
-                check_set = coll_set
-
-
-        # checking diagonals
-        # HARDCODED!!!
-        diagonals = [ [ board[1][0], board[2][1], board[3][2] ], [ board[3][0], board[2][1], board[1][2] ] ]
-        for diagonal in diagonals:
-            diagonal_set = set( diagonal )
-            if "|   " not in diagonal_set:
-                if ( "| x " not in diagonal_set ) or ( "| o " not in diagonal_set ):
-                    check_set = diagonal_set
-
-
-
-        if "|   " not in check_set:
-            if "| x " in check_set and "| o " in check_set:
-                pass
-
-            elif "| x " not in check_set:
-                winner = 2
-                print( "Player2 wins!" )
-
-            elif "| o " not in check_set:
-                winner = 1
-                print( "Player1 wins!" )
-
-        return winner
-
 
     #===========================================================================
     # Execution
@@ -160,6 +161,7 @@ if __name__ == '__main__':
             # update the board with user move
             game_board = update_board( game_board, user_move_col, user_move_row, symbol )
             print_board( game_board )
+            print( game_board )
 
             # change player and symbol
             if player == 1:
