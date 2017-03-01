@@ -20,7 +20,7 @@ Hint: use the Python random library for picking a random word.
 # SOLUTION
 # created by Kostya
 # on 1 Mar 2017
-# Time spent: 33- min
+# Time spent: 5 min
 #
 
 import random
