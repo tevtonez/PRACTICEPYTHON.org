@@ -64,16 +64,21 @@ def update_board( board, move_col, move_row, symbol ):
 def check_winner( board, colls = 3, rows = 3 ):
     '''Takes game board dictionary and checks if there are winning combinations'''
     winner = None
-    check_set = {"|   "}
+    check_set_rows = {"|   "}
+    check_set_colls = {"|   "}
+    check_set_diags = {"|   "}
 
     # checking rows
+    row_set = set()
+
     for i in range( rows ):
         if "|   " not in board[i + 1]:
             row_set = set( board[i + 1] )
-            check_set = row_set
+            check_set_rows = row_set
 
 
     # checking columns
+    coll_set = set()
     for i in range( colls ):
         cells_list = []
         for r in range( rows ):
@@ -81,29 +86,32 @@ def check_winner( board, colls = 3, rows = 3 ):
 
         coll_set = set( cells_list )
         if "|   " not in coll_set:
-            check_set = coll_set
+            check_set_colls = coll_set
 
+    # print( "HERE!", check_set_colls )
 
     # checking diagonals
     # HARDCODED!!!
     diagonals = [ [ board[1][0], board[2][1], board[3][2] ], [ board[3][0], board[2][1], board[1][2] ] ]
+    diagonal_set = set()
     for diagonal in diagonals:
+
         diagonal_set = set( diagonal )
         if "|   " not in diagonal_set:
             if ( "| x " not in diagonal_set ) or ( "| o " not in diagonal_set ):
-                check_set = diagonal_set
+                check_set_diags = diagonal_set
 
 
 
-    if "|   " not in check_set:
-        if "| x " in check_set and "| o " in check_set:
+    if "|   " not in check_set_rows or "|   " not in check_set_colls or "|   " not in check_set_diags:  # check if there are no empty cells in one of the sets
+        if ( "| x " in check_set_rows and "| o " in check_set_rows ) or ( "| x " in check_set_colls and "| o " in check_set_colls ) or  ( "| x " in check_set_diags and "| o " in check_set_diags ):  # check if set contains only one player
             pass
 
-        elif "| x " not in check_set:
+        elif "| x " not in check_set_rows and "| x " not in check_set_colls and "| x " not in check_set_diags:
             winner = 2
             print( "Player2 wins!" )
 
-        elif "| o " not in check_set:
+        elif "| o " not in check_set_rows and "| o " not in check_set_colls and "| o " not in check_set_diags:
             winner = 1
             print( "Player1 wins!" )
 
