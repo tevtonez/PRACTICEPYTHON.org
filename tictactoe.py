@@ -144,7 +144,7 @@ if __name__ == '__main__':
                     empty_cell += 1
 
         if empty_cell == 0:
-            print( "No moves left, game over and tt's seems to be a tie!" )
+            print( "No moves left, game over and it seems to be a tie!" )
             break
 
 
@@ -161,7 +161,7 @@ if __name__ == '__main__':
             # update the board with user move
             game_board = update_board( game_board, user_move_col, user_move_row, symbol )
             print_board( game_board )
-            print( game_board )
+            # print( game_board )
 
             # change player and symbol
             if player == 1:
