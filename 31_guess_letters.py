@@ -18,7 +18,7 @@ of guesses the player has remaining - we will deal with those in a future exerci
 #
 # SOLUTION
 # created by Kostya
-# on 1 Mar 2017
+# on 3 Mar 2017
 # Time spent: 20 min
 #
 
