@@ -21,6 +21,7 @@ Optional additions:
 - Rather than telling the user "You have 4 incorrect guesses left", display some picture art for the Hangman. This is challenging - do the other parts of the exercise first!
 
 Your solution will be a lot cleaner if you make use of functions to help you!
+
 '''
 
 #
