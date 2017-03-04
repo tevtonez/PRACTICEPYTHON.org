@@ -33,6 +33,16 @@ Your solution will be a lot cleaner if you make use of functions to help you!
 
 import  random, os
 
+
+
+def start_new_game():
+
+
+            pass
+
+
+
+
 def pick_word( file_name ):
 
     with open( file_name, 'r' ) as f_dic:
@@ -53,7 +63,7 @@ def guess_letter( word ):
 
     positions = []
     guessed_letters = []
-    guesses = len( word.strip() )
+    guesses = 6
 
     while True:
         user_inupt = input( "Guess your letter: " ).upper()
@@ -95,7 +105,6 @@ def guess_letter( word ):
 
 
 
-
 if __name__ == '__main__':
 
     welcome = "Welcome to Hangman!"
@@ -117,5 +126,14 @@ if __name__ == '__main__':
     print( ' ' + ' ' + ' ' + ' ' + ' ' + chr( 0x2551 ) )
     print( chr( 0x2566 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2569 ) + chr( 0x2550 ) + chr( 0x2566 ) )
 
+
     file_name = "sowpods.txt"
-    guess_letter( pick_word( file_name ) )
+
+    while True:
+        play_again = input( "Start a new game? [y/n]: " )
+
+        if play_again == "y":
+            guess_letter( pick_word( file_name ) )
+
+        elif play_again == "n":
+            quit()
