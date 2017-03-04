@@ -31,7 +31,7 @@ Your solution will be a lot cleaner if you make use of functions to help you!
 # Time spent: 20 min
 #
 
-import  random
+import  random, os
 
 def pick_word( file_name ):
 
@@ -57,11 +57,11 @@ def guess_letter( word ):
 
     while True:
         user_inupt = input( "Guess your letter: " ).upper()
+        os.system( 'clear' )
 
         # add letter to guessed list
         if user_inupt not in guessed_letters:
             guessed_letters.append( user_inupt )
-            guesses -= 1
 
             if user_inupt in word:
 
@@ -80,6 +80,7 @@ def guess_letter( word ):
 
             else:
                 print( "Wrong letter!" )
+                guesses -= 1
 
 
             if guesses == 0:
@@ -97,8 +98,24 @@ def guess_letter( word ):
 
 if __name__ == '__main__':
 
+    welcome = "Welcome to Hangman!"
+    print( '\n' + chr( 0x2550 ) * len( welcome ) )
+    print( welcome )
+    print( chr( 0x2550 ) * len( welcome ) + '\n' )
 
-    print( "Welcome to Hangman!\n" )
+    print( ' ' + chr( 0x2552 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2566 ) + chr( 0x2550 ) )
+    print( ' ' + chr( 0x2502 ) + ' ' + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2554 ) + chr( 0x2567 ) + chr( 0x2557 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2551 ) + " " + chr( 0x2551 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x255A ) + chr( 0x2566 ) + chr( 0x255D ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2554 ) + chr( 0x256C ) + chr( 0x2557 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2551 ) + chr( 0x2551 ) + chr( 0x2551 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x255C ) + chr( 0x2551 ) + chr( 0x2559 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2554 ) + chr( 0x2569 ) + chr( 0x2557 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2551 ) + ' ' + chr( 0x2551 ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x255D ) + ' ' + chr( 0x255A ) + ' ' + ' ' + chr( 0x2551 ) )
+    print( ' ' + ' ' + ' ' + ' ' + ' ' + chr( 0x2551 ) )
+    print( chr( 0x2566 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2550 ) + chr( 0x2569 ) + chr( 0x2550 ) + chr( 0x2566 ) )
 
     file_name = "sowpods.txt"
     guess_letter( pick_word( file_name ) )
