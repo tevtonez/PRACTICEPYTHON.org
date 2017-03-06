@@ -23,7 +23,7 @@ Benjamin Franklin
 # SOLUTION
 # created by Kostya
 # on 4 Mar 2017
-# Time spent: 05 min
+# Time spent: 13 min
 #
 
 import os
