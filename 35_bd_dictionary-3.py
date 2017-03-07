@@ -22,7 +22,7 @@ Your program should output something like:
 #
 # SOLUTION
 # created by Kostya
-# on 6 Mar 2017
+# on 7 Mar 2017
 # Time spent: 15 min
 #
 
