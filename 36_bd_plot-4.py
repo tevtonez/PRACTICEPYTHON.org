@@ -14,12 +14,15 @@ you can use my scientist birthday JSON file. Just parse out the months and draw 
 # SOLUTION
 # created by Kostya
 # on 17 Apr 2017
-# Time spent:  min
+# Time spent: 20 min
 #
 
 import os
 import json
 import collections
+
+from bokeh.plotting import figure, show, output_file
+
 
 
 
@@ -66,6 +69,35 @@ def month_bds( load_from_json ):
     for key, value in month_counter.items():
         print( key, ':', value )
 
+def month_bds_for_plot( load_from_json, plot_file_name ):
+
+    # making lists for the months and occurrences
+    bd_months_list = []
+    x_months = []
+    months_list = ['January', 'February', 'March', 'April', 'May', 'July', 'June', 'August', 'September', 'October', 'November', 'December']
+    y_occur = []
+
+    for value in load_from_json.values():
+        bd_months_list.append( value.split( ' ' )[0] )
+
+    # counting month in the list
+    month_counter = collections.Counter( bd_months_list )
+
+    for key, value in month_counter.items():
+        x_months.append( key )
+        y_occur.append( value )
+
+    # saving plot file
+    output_file( plot_file_name + ".html" )
+
+    # building plot
+    plot = figure( x_range = months_list )
+    plot.vbar( x = x_months, top = y_occur, width = 0.5 )
+
+    show ( plot )
+
+
+
 
 #===============================================================================
 # EXECUTION
@@ -79,7 +111,7 @@ if __name__ == '__main__':
     print_names( read_file( file ) )
 
     while True:
-        user_input = input( "\nType name to look up for a birthday\n\nType 'add' do add new item to  the birthday dictionary;\nType 'month' to see how many people have a birthday in each month.;\nType 'exit' to quit.\n" )
+        user_input = input( "\nType name to look up for a birthday\n\nType 'add' do add new item to  the birthday dictionary;\nType 'month' to see how many people have a birthday in each month.;\nType 'plot' to plot data in HTML file.\n;\nType 'exit' to quit.\n" )
 
         if user_input == "add":
             # ask user for name and date
@@ -101,8 +133,14 @@ if __name__ == '__main__':
         elif user_input == 'month':
             month_bds( read_file( file ) )
 
+        elif user_input == 'plot':
+            plot_file_name = input( "Enter file name to save plot (without extension): " )
+
+            month_bds_for_plot( read_file( file ), plot_file_name )
+
         elif user_input == 'exit':
             quit()
+
         else:
             get_bd( read_file( file ), user_input )
 
